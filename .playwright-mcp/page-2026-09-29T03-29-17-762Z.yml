@@ -1,0 +1,219 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - link "Skip to content" [ref=e3] [cursor=pointer]:
+      - /url: "#main"
+    - generic [ref=e4]:
+      - link "Tarun Sunil home" [ref=e5] [cursor=pointer]:
+        - /url: "#home"
+        - text: TS
+      - button "Toggle colour theme" [ref=e11] [cursor=pointer]:
+        - generic [ref=e12]: Dark
+        - generic [aria-hidden] [ref=e13]: ◐
+      - button "Menu" [ref=e243] [cursor=pointer]:
+        - generic [aria-hidden] [ref=e244]: ☰
+    - generic [ref=e28]:
+      - generic [ref=e29]:
+        - paragraph [ref=e30]: Chennai, India · Associate Software Engineer
+        - heading [level=1] [ref=e31]:
+          - text: Systems that
+          - emphasis [ref=e32]: move
+          - text: ideasforward.
+        - paragraph [ref=e33]: I’m Tarun Sunil, a Computer Science graduate and AI systems builder. Associate Software Engineer at Accenture, and the builder behind LumenForge.
+        - button "Enter the work" [ref=e34] [cursor=pointer]: Enter the work ↘
+      - generic "Tarun Sunil identification card" [ref=e35]
+      - generic [ref=e39]: Scroll to explore
+    - generic [ref=e41]:
+      - paragraph [ref=e42]: 01 / About
+      - generic [ref=e43]:
+        - heading "Engineering that makes complex systems feel legible." [level=2] [ref=e44]
+        - generic [ref=e45]:
+          - paragraph [ref=e46]: I’m a B.Tech Computer Science graduate from SRM Institute of Science and Technology, class of 2026. I build backend infrastructure, data engineering, and AI systems that move, transform, and surface information reliably at scale.
+          - paragraph [ref=e47]: Outside work, I explore creative tools, retrieval systems, and products with measurable outcomes.
+          - generic [ref=e48]:
+            - generic [ref=e49]:
+              - strong [ref=e50]: "9.14"
+              - generic [ref=e51]: CGPA / 10
+            - generic [ref=e52]:
+              - strong [ref=e53]: "18"
+              - generic [ref=e54]: DQ checks
+            - generic [ref=e55]:
+              - strong [ref=e56]: 30%
+              - generic [ref=e57]: latency cut
+            - generic [ref=e58]:
+              - strong [ref=e59]: "06"
+              - generic [ref=e60]: projects
+    - generic [ref=e62]:
+      - generic [ref=e66]:
+        - paragraph [ref=e67]: 02 / Selected work
+        - heading "Built to be explored." [level=2] [ref=e68]:
+          - generic [aria-hidden] [ref=e69]:
+            - generic [ref=e70]: B
+            - generic [ref=e71]: u
+            - generic [ref=e72]: i
+            - generic [ref=e73]: l
+            - generic [ref=e74]: t
+          - generic [aria-hidden] [ref=e75]:
+            - generic [ref=e76]: t
+            - generic [ref=e77]: o
+          - generic [aria-hidden] [ref=e78]:
+            - generic [ref=e79]: b
+            - generic [ref=e80]: e
+          - generic [aria-hidden] [ref=e81]:
+            - generic [ref=e82]: e
+            - generic [ref=e83]: x
+            - generic [ref=e84]: p
+            - generic [ref=e85]: l
+            - generic [ref=e86]: o
+            - generic [ref=e87]: r
+            - generic [ref=e88]: e
+            - generic [ref=e89]: d
+            - generic [ref=e90]: .
+        - paragraph [ref=e91]: Scroll sideways through selected products and systems.
+      - generic [ref=e92]:
+        - article [ref=e93]:
+          - generic [ref=e94]:
+            - generic [ref=e95]:
+              - img "LumenForge preview" [ref=e96]
+              - button "Show details for LumenForge" [pressed] [ref=e97] [cursor=pointer]
+            - generic [ref=e100]:
+              - button "Hide details for LumenForge" [ref=e101] [cursor=pointer]
+              - generic [ref=e104]:
+                - text: C++ · Qt6 · ONNX · OpenCV
+                - heading "LumenForge" [level=3] [ref=e105]
+                - paragraph [ref=e106]: A native photo editor with an ONNX inference pipeline.
+                - link "View project" [ref=e107] [cursor=pointer]:
+                  - /url: https://github.com/TarunSunil/photoshop
+                  - text: View project
+                  - generic [aria-hidden] [ref=e108]: ↗
+        - article [ref=e109]:
+          - generic [ref=e110]:
+            - generic [ref=e111]:
+              - img "FYI — Memory OS preview" [ref=e112]
+              - button "Show details for FYI — Memory OS" [ref=e113] [cursor=pointer]
+            - generic [ref=e116]:
+              - button "Hide details for FYI — Memory OS" [ref=e117] [cursor=pointer]
+              - generic [ref=e120]:
+                - text: Next.js · pgvector · Gemini
+                - heading "FYI — Memory OS" [level=3] [ref=e121]
+                - paragraph [ref=e122]: A private memory layer with RAG, agents, and nightly consolidation.
+                - link "View project" [ref=e123] [cursor=pointer]:
+                  - /url: https://le-mem-inky.vercel.app/
+                  - text: View project
+                  - generic [aria-hidden] [ref=e124]: ↗
+        - article [ref=e125]:
+          - generic [ref=e126]:
+            - generic [ref=e127]:
+              - img "Retail Intelligence preview" [ref=e128]
+              - button "Show details for Retail Intelligence" [ref=e129] [cursor=pointer]
+            - generic [ref=e132]:
+              - button "Hide details for Retail Intelligence" [ref=e133] [cursor=pointer]
+              - generic [ref=e136]:
+                - text: Databricks · PySpark · Delta Lake
+                - heading "Retail Intelligence" [level=3] [ref=e137]
+                - paragraph [ref=e138]: A governed Medallion pipeline and AI/BI dashboard, delivered at Accenture.
+                - link "View project" [ref=e139] [cursor=pointer]:
+                  - /url: "#experience"
+                  - text: View project
+                  - generic [aria-hidden] [ref=e140]: ↗
+        - article [ref=e141]:
+          - generic [ref=e142]:
+            - generic [ref=e143]:
+              - img "AI Travel Planner preview" [ref=e144]
+              - button "Show details for AI Travel Planner" [ref=e145] [cursor=pointer]
+            - generic [ref=e148]:
+              - button "Hide details for AI Travel Planner" [ref=e149] [cursor=pointer]
+              - generic [ref=e152]:
+                - text: Gemini · Amadeus · Flask
+                - heading "AI Travel Planner" [level=3] [ref=e153]
+                - paragraph [ref=e154]: Intent-led itineraries with live flight data.
+                - link "View project" [ref=e155] [cursor=pointer]:
+                  - /url: https://ai-travel-planner-seven-flax.vercel.app/
+                  - text: View project
+                  - generic [aria-hidden] [ref=e156]: ↗
+        - article [ref=e157]:
+          - generic [ref=e158]:
+            - generic [ref=e159]:
+              - img "FitLife preview" [ref=e160]
+              - button "Show details for FitLife" [ref=e161] [cursor=pointer]
+            - generic [ref=e164]:
+              - button "Hide details for FitLife" [ref=e165] [cursor=pointer]
+              - generic [ref=e168]:
+                - text: Next.js · FastAPI · Supabase
+                - heading "FitLife" [level=3] [ref=e169]
+                - paragraph [ref=e170]: A two-stage Gemini-powered fitness PWA.
+                - link "View project" [ref=e171] [cursor=pointer]:
+                  - /url: https://fit-life-indol.vercel.app/
+                  - text: View project
+                  - generic [aria-hidden] [ref=e172]: ↗
+        - article [ref=e173]:
+          - generic [ref=e174]:
+            - button "Show details for E-Commerce Platform" [ref=e177] [cursor=pointer]
+            - generic [ref=e180]:
+              - button "Hide details for E-Commerce Platform" [ref=e181] [cursor=pointer]
+              - generic [ref=e184]:
+                - text: FastAPI · PostgreSQL · Redis
+                - heading "E-Commerce Platform" [level=3] [ref=e185]
+                - paragraph [ref=e186]: A resilient backend commerce foundation.
+                - link "View project" [ref=e187] [cursor=pointer]:
+                  - /url: https://github.com/TarunSunil/e-commerce-python
+                  - text: View project
+                  - generic [aria-hidden] [ref=e188]: ↗
+    - generic [ref=e189]:
+      - paragraph [ref=e190]: 03 / Experience
+      - heading "A path through systems." [level=2] [ref=e191]
+      - generic [ref=e192]:
+        - article [ref=e193]:
+          - generic [ref=e194]: Aug ’26 — Present
+          - heading "Associate Software Engineer · Accenture" [level=3] [ref=e195]
+        - article [ref=e196]:
+          - generic [ref=e197]: Dec ’25 — May ’26
+          - heading "Data Engineering Intern · Accenture" [level=3] [ref=e198]
+          - paragraph [ref=e199]: "Built a Retail Sales Intelligence Platform on Azure Databricks: 12 governed Delta tables, 18 automated DQ checks with a 100% pass rate, and a six-tile AI/BI dashboard."
+        - article [ref=e200]:
+          - generic [ref=e201]: Jul — Dec ’25
+          - heading "Software Developer Intern · Botcode" [level=3] [ref=e202]
+          - paragraph [ref=e203]: Optimised HealthPilot’s production Flask APIs, cutting response latency by 30%, and integrated a Bangla-to-English speech module for clinical staff.
+        - article [ref=e204]:
+          - generic [ref=e205]: 2022 — 2026
+          - heading "B.Tech CSE · SRM IST Ramapuram" [level=3] [ref=e206]
+          - paragraph [ref=e207]: Graduated with a 9.14/10 CGPA, specialising through projects in AI, data, systems, and visual software.
+    - generic [ref=e208]:
+      - paragraph [ref=e209]: 04 / Capabilities
+      - heading "A technical practice with a wide aperture." [level=2] [ref=e210]
+      - generic [ref=e211]:
+        - generic [ref=e212]: Python
+        - generic [ref=e213]: SQL
+        - generic [ref=e214]: TypeScript
+        - generic [ref=e215]: C++
+        - generic [ref=e216]: Next.js
+        - generic [ref=e217]: FastAPI
+        - generic [ref=e218]: Qt6
+        - generic [ref=e219]: RAG
+        - generic [ref=e220]: Gemini
+        - generic [ref=e221]: ONNX
+        - generic [ref=e222]: Databricks
+        - generic [ref=e223]: PySpark
+        - generic [ref=e224]: Delta Lake
+        - generic [ref=e225]: Docker
+        - generic [ref=e226]: Azure
+        - generic [ref=e227]: AWS
+        - generic [ref=e228]: PostgreSQL
+        - generic [ref=e229]: Redis
+    - generic [ref=e230]:
+      - paragraph [ref=e232]: 05 / Contact
+      - heading [level=2] [ref=e233]:
+        - text: Let’s build something
+        - emphasis [ref=e234]: worth remembering.
+      - paragraph [ref=e235]: Open to interesting engineering conversations and new opportunities. Based in Chennai and available to relocate.
+      - link "tarunsunil73@gmail.com" [ref=e236] [cursor=pointer]:
+        - /url: mailto:tarunsunil73@gmail.com
+        - text: tarunsunil73@gmail.com ↗
+      - generic [ref=e237]:
+        - generic [ref=e238]: © 2026 Tarun Sunil
+        - generic [ref=e239]:
+          - link "LinkedIn" [ref=e240] [cursor=pointer]:
+            - /url: https://linkedin.com/in/tarun-sunil-29b213252
+          - text: ·
+          - link "GitHub" [ref=e241] [cursor=pointer]:
+            - /url: https://github.com/TarunSunil
+  - alert [ref=e242]

@@ -4,3 +4,10 @@ out/
 dist/
 build/
 .env
+*.log
+.agents/
+.codex/
+.impeccable/
+skills-lock.json
+HANDOFF.md
+session_handoff.md
