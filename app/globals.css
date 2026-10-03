@@ -61,3 +61,21 @@
 @media(max-width:900px){.projects{padding:110px 28px 90px;min-height:auto;gap:42px}.projects-heading{padding:0}.scroll-float{white-space:normal;font-size:clamp(46px,11vw,74px)}.project-track{width:100%;padding:0;display:grid;grid-template-columns:1fr;gap:30px}.projects .project-card{width:100%;height:clamp(280px,58vw,430px);min-height:0;padding:0}.projects .project-preview{height:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden}.projects .project-details{padding:28px;backface-visibility:hidden;-webkit-backface-visibility:hidden}.projects .project-card h3{font-size:32px}.project-info-toggle{top:16px;right:16px}.beams{opacity:.26}}
 
 .portrait img{position:absolute;inset:0;z-index:2;width:100%;height:100%;object-fit:cover;object-position:center;filter:grayscale(.12) contrast(1.03)}
+
+/* Single-card WebGL pilot; the tracked DOM faces stay clipped to the card bounds. */
+.projects{isolation:isolate}
+.projects-glass-canvas{position:absolute!important;inset:0;z-index:1;width:100%!important;height:100%!important;pointer-events:none!important}
+.projects-glass-canvas canvas{pointer-events:none!important}
+.projects-heading,.project-track{position:relative;z-index:2}
+.projects .project-glass-card{z-index:2;overflow:hidden;touch-action:pan-y;box-shadow:var(--shadow);background:transparent;border:0}
+.projects .project-card,.projects .project-card *{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+.projects .glass-project-face{position:absolute;top:50%;left:50%;display:grid;place-items:center;overflow:hidden;padding:clamp(32px,4vw,64px);border:1px solid var(--line);border-radius:inherit;color:var(--ink);box-shadow:inset 0 1px 0 rgba(255,255,255,.26),0 22px 58px rgba(0,0,0,.2);backface-visibility:hidden;-webkit-backface-visibility:hidden;transform:translate(-50%,-50%);transform-style:preserve-3d}
+.projects .glass-project-front{appearance:none;font:inherit;cursor:pointer;text-align:left;background:var(--surface);backdrop-filter:blur(24px) saturate(140%);-webkit-backdrop-filter:blur(24px) saturate(140%)}
+.projects .glass-project-front .project-orb{right:10%;top:15%;width:min(250px,38%);aspect-ratio:1;height:auto}
+.projects .glass-project-front .project-info-toggle{top:20px;right:20px}
+.projects .glass-project-back{background:rgba(22,24,33,.58);backdrop-filter:blur(24px) saturate(140%);-webkit-backdrop-filter:blur(24px) saturate(140%);cursor:default;opacity:0;pointer-events:none}
+:root[data-theme="light"] .projects .glass-project-back{background:rgba(238,242,248,.72)}
+.projects .project-card .glass-project-back{transform:translate(-50%,-50%)}
+.projects .glass-project-back .project-info-close{position:absolute;top:20px;right:20px}
+.projects .glass-project-back .project-copy a{width:auto;height:auto;min-height:42px;padding:0 14px;border-radius:999px}
+@media(max-width:900px){.projects-glass-canvas{z-index:1}.projects .project-glass-card{touch-action:pan-y}.projects .glass-project-face{padding:28px}.projects .glass-project-front .project-info-toggle{top:16px;right:16px}.projects .glass-project-back .project-info-close{top:16px;right:16px}}

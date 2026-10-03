@@ -4,8 +4,11 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Canvas } from "@react-three/fiber";
+import { View } from "@react-three/drei";
 import ScrollFloat from "./scroll-float";
 import Lanyard from "./lanyard";
+import GlassProjectCard from "./glass-project-card";
 import usePrefersReducedMotion from "./use-reduced-motion";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -36,6 +39,8 @@ export default function Portfolio() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [flippedProjects, setFlippedProjects] = useState<number[]>([]);
   const [failedPreviews, setFailedPreviews] = useState<string[]>([]);
+  const [webglAvailable, setWebglAvailable] = useState(false);
+  const [projectsNearViewport, setProjectsNearViewport] = useState(false);
   const projectsRef = useRef<HTMLElement>(null);
   const projectTrackRef = useRef<HTMLDivElement>(null);
   const themeHydrated = useRef(false);
@@ -58,6 +63,26 @@ export default function Portfolio() {
 
   useEffect(() => {
     setYear(new Date().getFullYear());
+  }, []);
+
+  useEffect(() => {
+    const probe = document.createElement("canvas");
+    let context: WebGL2RenderingContext | null = null;
+    try {
+      context = probe.getContext("webgl2");
+      setWebglAvailable(Boolean(context));
+    } catch {
+      setWebglAvailable(false);
+    }
+    context?.getExtension("WEBGL_lose_context")?.loseContext();
+  }, []);
+
+  useEffect(() => {
+    const section = projectsRef.current;
+    if (!section) return;
+    const observer = new IntersectionObserver(([entry]) => setProjectsNearViewport(entry.isIntersecting), { rootMargin: "220px 0px" });
+    observer.observe(section);
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -170,7 +195,12 @@ export default function Portfolio() {
 
       <section id="about" className="scene content-scene"><p className="eyebrow">01 / About</p><div className="split"><h2>Engineering that makes complex systems feel legible.</h2><div><p className="body-copy">I’m a B.Tech Computer Science graduate from SRM Institute of Science and Technology, class of 2026. I build backend infrastructure, data engineering, and AI systems that move, transform, and surface information reliably at scale.</p><p className="body-copy">Outside work, I explore creative tools, retrieval systems, and products with measurable outcomes.</p><div className="stat-row"><div><strong>9.14</strong><span>CGPA / 10</span></div><div><strong>18</strong><span>DQ checks</span></div><div><strong>30%</strong><span>latency cut</span></div><div><strong>{String(projects.length).padStart(2, "0")}</strong><span>projects</span></div></div></div></div></section>
 
-      <section id="projects" ref={projectsRef} className="scene projects"><div className="projects-heading"><p className="eyebrow">02 / Selected work</p><ScrollFloat>Built to be explored.</ScrollFloat><p>Scroll sideways through selected products and systems.</p></div><div ref={projectTrackRef} className="project-track">{projects.map(([name, description, tag, href, image], index) => <article className={`project-card card-${index % 4} ${flippedProjects.includes(index) ? "is-flipped" : ""}`} key={name}><div className="project-card-inner"><div className="project-card-face project-preview">{(image && !failedPreviews.includes(name)) ? <Image src={image} alt={`${name} preview`} fill loading="eager" sizes="(max-width: 900px) calc(100vw - 56px), min(64vw, 880px)" onLoadingComplete={queueGalleryRefresh} onError={() => setFailedPreviews((current) => current.includes(name) ? current : [...current, name])} /> : <span className="project-orb" />}<button className="project-info-toggle" type="button" onClick={() => toggleProjectInfo(index)} aria-label={`Show details for ${name}`} aria-pressed={flippedProjects.includes(index)}><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" /><path d="M12 10.5v5" /><path d="M12 7.5h.01" /></svg></button></div><div className="project-card-face project-details"><button className="project-info-toggle project-info-close" type="button" onClick={() => toggleProjectInfo(index)} aria-label={`Hide details for ${name}`}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 8 8 8M16 8l-8 8" /></svg></button>
+      <section id="projects" ref={projectsRef} className="scene projects">
+        {webglAvailable && <Canvas className="projects-glass-canvas" frameloop="demand" dpr={[1, 1.4]} gl={{ alpha: true, antialias: true }} camera={{ position: [0, 0, 5], fov: 50 }} onCreated={({ gl }) => gl.domElement.addEventListener("webglcontextlost", () => setWebglAvailable(false), { once: true })}><View.Port /></Canvas>}
+        <div className="projects-heading"><p className="eyebrow">02 / Selected work</p><ScrollFloat>Built to be explored.</ScrollFloat><p>Scroll sideways through selected products and systems.</p></div>
+        <div ref={projectTrackRef} className="project-track">{projects.map(([name, description, tag, href, image], index) => index === projects.length - 1
+          ? <GlassProjectCard key={name} project={{ name, description, tag, href }} webglAvailable={webglAvailable} visible={projectsNearViewport} reducedMotion={reducedMotion} flipped={flippedProjects.includes(index)} onFlip={() => toggleProjectInfo(index)} />
+          : <article className={`project-card card-${index % 4} ${flippedProjects.includes(index) ? "is-flipped" : ""}`} key={name}><div className="project-card-inner"><div className="project-card-face project-preview">{(image && !failedPreviews.includes(name)) ? <Image src={image} alt={`${name} preview`} fill loading="eager" sizes="(max-width: 900px) calc(100vw - 56px), min(64vw, 880px)" onLoadingComplete={queueGalleryRefresh} onError={() => setFailedPreviews((current) => current.includes(name) ? current : [...current, name])} /> : <span className="project-orb" />}<button className="project-info-toggle" type="button" onClick={() => toggleProjectInfo(index)} aria-label={`Show details for ${name}`} aria-pressed={flippedProjects.includes(index)}><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" /><path d="M12 10.5v5" /><path d="M12 7.5h.01" /></svg></button></div><div className="project-card-face project-details"><button className="project-info-toggle project-info-close" type="button" onClick={() => toggleProjectInfo(index)} aria-label={`Hide details for ${name}`}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 8 8 8M16 8l-8 8" /></svg></button>
             <div className="project-copy">
               <small>{tag}</small>
               <h3>{name}</h3>
